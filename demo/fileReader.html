@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+    <!-- <p> 
+        <label>请选择一个文件：</label> 
+            <input type="file" id="file" /> 
+            <input type="button" value="读取图像" onclick="readAsDataURL()" /> 
+            <input type="button" value="读取二进制数据" onclick="readAsBinaryString()" /> 
+            <input type="button" value="读取文本文件" onclick="readAsText()" /> 
+    </p> 
+    <div id="result" name="result"></div> 
+    <script type="text/javascript"> 
+        var result=document.getElementById("result"); 
+        var file=document.getElementById("file"); 
+        //判断浏览器是否支持FileReader接口 
+        if(typeof FileReader == 'undefined'){ 
+            result.InnerHTML="<p>你的浏览器不支持FileReader接口！</p>"; 
+            //使选择控件不可操作 
+            file.setAttribute("disabled","disabled"); 
+        } 
+        
+        function readAsDataURL(){ 
+            //检验是否为图像文件 
+            var file = document.getElementById("file").files[0]; 
+            if(!/image\/\w+/.test(file.type)){ 
+                alert("看清楚，这个需要图片！"); 
+                return false; 
+            } 
+            var reader = new FileReader(); 
+            //将文件以Data URL形式读入页面 
+            reader.readAsDataURL(file); 
+            reader.onload=function(e){ 
+                var result=document.getElementById("result"); 
+                //显示文件 
+                result.innerHTML='<img src="' + this.result +'" alt="" />'; 
+            } 
+        } 
+        
+        function readAsBinaryString(){ 
+            var file = document.getElementById("file").files[0]; 
+            var reader = new FileReader(); 
+            //将文件以二进制形式读入页面 
+            reader.readAsBinaryString(file); 
+            reader.onload=function(f){ 
+                var result=document.getElementById("result"); 
+                //显示文件 
+                result.innerHTML=this.result; 
+            } 
+        } 
+        
+        function readAsText(){ 
+            var file = document.getElementById("file").files[0]; 
+            var reader = new FileReader(); 
+            //将文件以文本形式读入页面 
+            reader.readAsText(file); 
+            reader.onload=function(f){ 
+                var result=document.getElementById("result"); 
+                //显示文件 
+                result.innerHTML=this.result; 
+            } 
+        } 
+        
+    </script>       -->
+    <!-- 使用js的filereader对象实现上传图片时的图片预览功能 -->
+
+    <div>
+        <div id="image1" >
+  　　　　　　<p>上传截图</p>
+            <input type="file" name="screenshot1" id="1" onchange="imageshow(this)"/>
+        </div>
+  　　　　<div id="show1" style="display:none;">
+  　　　　　　<img  src="" id="portrait1" width="100" height="70">
+  　　　　</div>
+  　　　<div id="image2">
+            <p>上传截图</p>
+            <input type="file" name="screenshot2" id="2" onchange="imageshow(this)"/>
+        </div>
+  　　　 <div id="show2" style="display:none;">
+  　　　　　　<img  src="" id="portrait2" width="100" height="70">
+  　　　 </div>
+        <div id="image3">
+          <p>上传截图</p>
+          <input type="file" name="screenshot3" id="3" onchange="imageshow(this)"/>
+        </div>
+      　　<div id="show3" style="display:none;">
+  　　　　　　<img  src="" id="portrait3" width="100" height="70" >
+  　　　　</div>
+  </div> 
+  <script>
+      　//选择图片时预览功能
+　　　　function imageshow(source){
+          console.log(source.id)
+          var file = source.files[0];
+          console.log(file)
+          var imageid = source.id;
+          if (window.FileReader) {
+                var fr = new FileReader();
+                // fr.readAsDataURL(file);
+                fr.readAsText(file); 
+                fr.onloadend = function(e) {
+                  console.log(e)
+                  document.getElementById("portrait"+imageid).src = e.target.result;
+                };
+          }
+    // 　　　　document.getElementById("image"+imageid).style.display="none";
+          document.getElementById("show"+imageid).style.display="block";
+　　    }
+  </script>
+
+  <!-- 使用window.createObjectURL -->
+
+  <!-- <form name="form0" id="form0" > 
+      <input type="file" name="file0" id="file0" multiple="multiple" />
+      <br>
+      <img src="" width="100" height="100" id="img0" > 
+  </form> 
+  <script> 
+      $("#file0").change(function(){ 
+      　　var objUrl = getObjectURL(this.files[0]) ; 
+      　　console.log("objUrl = "+objUrl) ; 
+      　　if (objUrl) { 
+      　　　　$("#img0").attr("src", objUrl) ; 
+      　　} 
+      }) ; 
+      
+      //取得该文件的url 
+      function getObjectURL(file) { 
+      　　var url = null ; 
+      　　if (window.createObjectURL!=undefined) { 
+      　　　　url = window.createObjectURL(file) ; 
+      　　} else if (window.URL!=undefined) { 
+      　　　　url = window.URL.createObjectURL(file) ; 
+      　　} else if (window.webkitURL!=undefined) { 
+      　　　　url = window.webkitURL.createObjectURL(file) ; 
+      　　} 
+      　　return url ; 
+      } 
+      </script>  -->
+      <!-- <script>
+        var btnEl; 
+          try { 
+              btnEl = document.createElement('<BUTTON name=damon type=reset></BUTTON>'); 
+          } catch(e){} 
+            
+          if(! btnEl) { 
+              btnEl = document.createElement('button'); 
+            
+              var aType = document.createAttribute('type'); 
+              var aName = document.createAttribute('name'); 
+            
+              aType.value = 'reset'; 
+              aName.value = 'damon'; 
+            
+              btnEl.setAttributeNode(aType); 
+              btnEl.setAttributeNode(aName); 
+          } 
+            
+          document.body.appendChild(btnEl); 
+      </script> -->
+
+      <!-- <script>
+        
+        var blob = new Blob(["Hello World"]);
+        
+        var a = document.createElement("a");
+        a.href = window.URL.createObjectURL(blob);
+        a.download = "hello-world.txt";
+        a.textContent = "Download Hello World!";
+        document.body.appendChild(a);
+        
+      </script> -->
+</body>
+</html>
