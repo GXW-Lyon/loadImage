@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <!-- <input type="file" id="fileInput" name="file" multiple="multiple" accept="image/*">
+    <script>
+        var fileInput = document.querySelector("#fileInput");
+        fileInput.addEventListener("change", function (event) {
+            var file = fileInput.files[0];
+            console.log(fileInput.files)
+        }, false)
+    </script> -->
+    <!-- <div id="dropbox" class="dropbox">
+      <div class="area">拖动图片到这里</div>
+    </div>
+    <div id="preview"></div>
+    <script>
+      var dropbox = document.querySelector('#dropbox');
+      var preview = document.querySelector('#preview');
+      dropbox.addEventListener('dragenter',function(e){
+        e.stopPropagation();
+        e.defaultPrevented();
+      },false)
+      dropbox.addEventListener('dragover',function(e){
+        e.stopPropagation();
+        e.preventDefault();
+      },false)
+      dropbox.addEventListener('drop',function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        console.log(e)
+        // var dt = e.dataTransfer;
+        // var files = dt.files;
+        // for(var i=0;i<files.length;i++){
+        //   var file = files[i];
+        //   var imageType = new RegExp("^image\/");
+        //   if(!imageType.test(file.type)) continue;
+        //   //填充选择的图片展示区
+        //   var img = document.createElement("img");
+        //   img.classList.add('obj');
+        //   img.file=file;
+        //   preview.appendChild(img);
+        //   //读取File对象的内容
+        //   var reader = new FileReader();
+        //   reader.onload = (function(aImg){
+        //     return function(e){
+        //       console.log(e);
+        //       aImg.src = e.target.result;
+        //     }
+        //   })(img);
+        //   reader.readAsDataURL(file);
+        // }
+      },false)
+    </script> -->
+</body>
+</html>

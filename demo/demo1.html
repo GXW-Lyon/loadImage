@@ -8,10 +8,50 @@
 </head>
 <body>
   <script>
+    // var img = new Image();
+    // img.onload = function(){
+    //   console.log(1);
+    // }
+    // img.onerror = function(){
+    //   console.log(2);
+    // }
+    // img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533707220637&di=8ef0c677a2c16330f5ee1ddfb0742fda&imgtype=0&src=http%3A%2F%2Fmedia.lanecrawford.com.cn%2Ffeature%2FWW-e2e6e9_20171115_megamenu.gif';
+    // var body = document.querySelector('body');
+    // body.appendChild(img);
+
+    // var img = new Image();
+    // img.onload = function(){
+    //   console.log(1)
+    // }
+    // img.onerror = function(){
+    //   console.log(2);
+    //   // img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533707220637&di=8ef0c677a2c16330f5ee1ddfb0742fda&imgtype=0&src=http%3A%2F%2Fmedia.lanecrawford.com.cn%2Ffeature%2FWW-e2e6e9_20171115_megamenu.gif'
+    //   // img.onerror = null;
+    // }
+    // img.src = ''
+    // function show(){
+    //   console.log('body is loaded');
+    //   console.log(img.complete);
+    //   var body = document.querySelector('body');
+    //   body.appendChild(img);
+    // }
+    // window.onload = show;
+// 1
+// demo1.html:31 body is loaded
+// demo1.html:32 true
+// 在非ie浏览器中，img对象的加载包含在body的加载过程中，也就是说img加载完成后，body才算是加载完毕，触发window.onload事件。因此再考虑到浏览器的兼容性和网页的加载时间，尽量不要在image对象里放置过多的图片。当然如果在window.onload之后执行预加载函数，就不会有问题了。
+window.onload = function(){
     var img = new Image();
-    img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533707220637&di=8ef0c677a2c16330f5ee1ddfb0742fda&imgtype=0&src=http%3A%2F%2Fmedia.lanecrawford.com.cn%2Ffeature%2FWW-e2e6e9_20171115_megamenu.gif';
+    img.onload = function(){
+      img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533707220637&di=8ef0c677a2c16330f5ee1ddfb0742fda&imgtype=0&src=http%3A%2F%2Fmedia.lanecrawford.com.cn%2Ffeature%2FWW-e2e6e9_20171115_megamenu.gif'
+    }
+    img.onerror = function(){
+      console.log(2);
+    }
+    img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533707220637&di=8ef0c677a2c16330f5ee1ddfb0742fda&imgtype=0&src=http%3A%2F%2Fmedia.lanecrawford.com.cn%2Ffeature%2FWW-e2e6e9_20171115_megamenu.gif'
     var body = document.querySelector('body');
     body.appendChild(img);
+}
   </script>
 </body>
 </html>
